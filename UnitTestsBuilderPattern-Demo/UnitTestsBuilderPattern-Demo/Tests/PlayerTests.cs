@@ -37,11 +37,11 @@ public class PlayerTests
                 default)
             );
 
-        var enemyHealth = 100;
+        var initialEnemyHealth = 100;
         var enemy = new Enemy(
             default,
             default,
-            enemyHealth,
+            initialEnemyHealth,
             default,
             default,
             30,
@@ -50,10 +50,10 @@ public class PlayerTests
             default);
 
         //Act
-        player.Attack(DamageType.Physical, enemy);
+        var newEnemyHealth = player.Attack(DamageType.Physical, enemy);
 
         //Assert
-        Assert.That(enemy.Health, Is.LessThan(enemyHealth));
+        Assert.That(newEnemyHealth, Is.LessThan(initialEnemyHealth));
     }
 
     [Test]
@@ -73,16 +73,16 @@ public class PlayerTests
                 .BuildSpell())
             .Build();
 
-        var enemyHealth = 100;
+        var initialEnemyHealth = 100;
         var enemy = new EnemyBuilder()
-            .WithMaxHealth(enemyHealth)
+            .WithMaxHealth(initialEnemyHealth)
             .WithArmor(30)
             .Build();
 
         //Act
-        player.Attack(DamageType.Physical, enemy);
+        var newEnemyHealth = player.Attack(DamageType.Physical, enemy);
 
         //Assert
-        Assert.That(enemy.Health, Is.LessThan(enemyHealth));
+        Assert.That(newEnemyHealth, Is.LessThan(initialEnemyHealth));
     }
 }

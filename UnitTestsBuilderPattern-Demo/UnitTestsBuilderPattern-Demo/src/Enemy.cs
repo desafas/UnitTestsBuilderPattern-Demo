@@ -47,10 +47,12 @@ public class Enemy
 
     private List<string> LootTable { get; }
 
-    public void ReceiveDamage(decimal damage)
+    public int ReceiveDamage(decimal damage)
     {
         Health -= (int)damage;
         if(Health < 0) 
             Health = 0;
+
+        return Health;
     }
 }

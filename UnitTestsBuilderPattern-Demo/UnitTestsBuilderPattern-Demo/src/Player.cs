@@ -74,7 +74,7 @@ public class Player
 
     private BaseWeapon Spell { get; }
 
-    public void Attack(DamageType damageType, Enemy enemy)
+    public int Attack(DamageType damageType, Enemy enemy)
     {
         var damage = damageType switch
         {
@@ -83,6 +83,6 @@ public class Player
             _ => throw new InvalidOperationException("Unknown damage type")
         };
 
-        enemy.ReceiveDamage(damage);
+        return enemy.ReceiveDamage(damage);
     }
 }
